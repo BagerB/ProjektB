@@ -5,7 +5,7 @@ include 'db/dbinfo.php';
 
 class RPG {
 
-    public $debug = true;
+    public $debug = false;
     public $mysql = null;
     public $db;
     public $connected = false;
@@ -14,6 +14,10 @@ class RPG {
         $db = new DBInfo();
 
         $this->mysql = new DB($db->base, $db->db_server, $db->db_user, $db->db_pass);
+
+        if (isset($_POST["debug"]) && $_POST["debug"] === "true") {
+            $this->debug = true;
+        }
 
         if ($this->mysql != null) {
             $this->connected = true;
@@ -27,7 +31,7 @@ class RPG {
      * lists all Userinformation
      */
     function listUser() {
-        $this->mysql->query("SELECT * FROM rpg_character, rpg_classes WHERE rpg_character.class = rpg_classes.id", $this->debug);
+        $this->mysql->query("SELECT * FROM rpg_character, rpg_classes WHERE rpg_character.class = rpg_classes.id", true);
     }
 
     /**
@@ -61,7 +65,10 @@ class RPG {
                 $this->mysql->query("INSERT INTO rpg_character (name, password) VALUES ('{$name}','" . md5($pass1) . "')");
                 $statusArray["status"] = "ok";
                 $statusArray["message"] = "User angelegt";
-                $returnInfo = array("id" => $this->mysql->lastInsertedId());
+
+                $user = $this->mysql->query("SELECT * FROM rpg_character WHERE id='{$this->mysql->lastInsertedId()}'", $this->debug);
+                $user = $this->mysql->fetchNextObject();
+                $returnInfo = array("id" => $user->id, "class" => $user->class, "team" => $user->team, "admin" => $user->admin);
             }
         }
         return array("response" => $statusArray, "userInfo" => $returnInfo);
@@ -130,6 +137,7 @@ class RPG {
         }
         return array("status" => $statusArray, "teams" => $teamArray);
     }
+
     /**
      * Zeigt alle verfügbaren Klassen an
      * @param type $teamID zeigt nur klassen eines Teams, sonst alle Klassen
@@ -250,6 +258,30 @@ class RPG {
             $statusArray["message"] = "User nicht gefunden";
         }
         return array("status" => $statusArray, "userInfo" => $returnInfo);
+    }
+
+    
+    
+    //INTERNE FUNKTIONEN//
+    /**
+     * Session Funktionen
+     * @param type $userId
+     * @return type
+     */
+    public function createSession($userId) {
+        $statusArray = array("status" => null, "message" => null);
+        $this->mysql->query("DELETE FROM rpg_session WHERE session_time < CURRENT TIMESTAMP - 1 day");
+        $this->mysql->query("DELETE FROM rpg_session WHERE user_id='" . $userId . "'");
+
+        $uniqueSessionId = generateRandomString();
+        $session = $this->mysql->query("INSERT INTO rpg_session (user_id, session_id) VALUES ('" . $userId . "','" . $uniqueSessionId . "')");
+        $session = $this->mysql->fetchNextObject();
+
+        return $uniqueSessionId;
+    }
+
+    function generateRandomString($length = 10) {
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
     }
 
 }
