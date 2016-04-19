@@ -31,7 +31,7 @@ class RPG {
      * lists all Userinformation
      */
     function listUser() {
-        $this->mysql->query("SELECT * FROM rpg_character, rpg_classes WHERE rpg_character.class = rpg_classes.id", true);
+        $this->mysql->query("SELECT * FROM rpg_character, rpg_classes WHERE rpg_character.class = rpg_classes.id ORDER BY rpg_character.id", true);
     }
 
     /**
@@ -260,8 +260,33 @@ class RPG {
         return array("status" => $statusArray, "userInfo" => $returnInfo);
     }
 
-    
-    
+    //########################### QUEST ###############################//
+    public function listQuestlog($userId, $done) {
+        $statusArray = array("status" => null, "message" => null);
+        if ($done === "1") {
+            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.quest_done='1' AND rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id",$this->debug);
+        } elseif($done === "0") {
+            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.quest_done='0' AND rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id",$this->debug);
+        }elseif($done === "2"){
+            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id",$this->debug);
+        }
+
+        
+
+        if ($this->mysql->numRows($quests) != 0) {
+            while ($line = $this->mysql->fetchNextObject($quests)) {
+                $questArray[] = array("quest_name" => $line->quest_name, "quest_description" => $line->quest_description, "quest_reward" => $line->quest_reward_item_id, "quest_reward_amount" => $line->quest_reward_amount,"quest_done"=>$line->quest_done);
+            }
+            $statusArray["status"] = "ok";
+            $statusArray["message"] = "Questlogrückgabe";
+        } else {
+            $statusArray["status"] = "error";
+            $statusArray["message"] = "Keine Quests gefunden";
+        }
+        
+         return array("status" => $statusArray, "quests" => $questArray);
+    }
+
     //INTERNE FUNKTIONEN//
     /**
      * Session Funktionen
