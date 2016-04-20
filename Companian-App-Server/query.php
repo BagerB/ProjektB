@@ -6,7 +6,7 @@ $rpg = new RPG();
 
 //Clean POST Data
 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-//TEST
+
 
 $action = $_POST['action'];
 
@@ -31,6 +31,18 @@ if ($action === "createuser") {
     echo json_encode($return, JSON_PRETTY_PRINT);
 } elseif ($action === "listquestlog") {
     $return = $rpg->listQuestlog($_POST["userid"], $_POST["done"]);
+    echo json_encode($return, JSON_PRETTY_PRINT);
+} elseif ($action === "listquests") {
+    $return = $rpg->listQuests($_POST["ownerid"]);
+    echo json_encode($return, JSON_PRETTY_PRINT);
+}elseif ($action === "setquest") {
+    $return = $rpg->setQuestActive($_POST["userid"],$_POST["questid"]);
+    echo json_encode($return, JSON_PRETTY_PRINT);
+}elseif ($action === "setquestdone") {
+    $return = $rpg->setQuestDone($_POST["userid"],$_POST["questid"]);
+    echo json_encode($return, JSON_PRETTY_PRINT);
+}elseif ($action === "listinventar") {
+    $return = $rpg->listInventar($_POST["userid"]);
     echo json_encode($return, JSON_PRETTY_PRINT);
 }
 ?>

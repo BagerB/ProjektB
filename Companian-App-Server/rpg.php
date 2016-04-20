@@ -264,27 +264,107 @@ class RPG {
     public function listQuestlog($userId, $done) {
         $statusArray = array("status" => null, "message" => null);
         if ($done === "1") {
-            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.quest_done='1' AND rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id",$this->debug);
-        } elseif($done === "0") {
-            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.quest_done='0' AND rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id",$this->debug);
-        }elseif($done === "2"){
-            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id",$this->debug);
+            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.quest_done='1' AND rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id", $this->debug);
+        } elseif ($done === "0") {
+            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.quest_done='0' AND rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id", $this->debug);
+        } elseif ($done === "2") {
+            $quests = $this->mysql->query("SELECT * FROM rpg_questlog, rpg_quests WHERE rpg_questlog.user_id='" . $userId . "' AND rpg_questlog.quest_id = rpg_quests.id", $this->debug);
         }
 
-        
+
 
         if ($this->mysql->numRows($quests) != 0) {
             while ($line = $this->mysql->fetchNextObject($quests)) {
-                $questArray[] = array("quest_name" => $line->quest_name, "quest_description" => $line->quest_description, "quest_reward" => $line->quest_reward_item_id, "quest_reward_amount" => $line->quest_reward_amount,"quest_done"=>$line->quest_done);
+                $questArray[] = array("quest_name" => $line->quest_name, "quest_description" => $line->quest_description, "quest_reward" => $line->quest_reward_item_id, "quest_reward_amount" => $line->quest_reward_amount, "quest_done" => $line->quest_done);
             }
             $statusArray["status"] = "ok";
-            $statusArray["message"] = "Questlogrückgabe";
+            $statusArray["message"] = "Questlog von UserId: " . $userId;
         } else {
             $statusArray["status"] = "error";
             $statusArray["message"] = "Keine Quests gefunden";
         }
-        
-         return array("status" => $statusArray, "quests" => $questArray);
+
+        return array("status" => $statusArray, "quests" => $questArray);
+    }
+
+    public function listQuests($ownerId = 0) {
+        $statusArray = array("status" => null, "message" => null);
+        if ($ownerId != 0) {
+            $quests = $this->mysql->query("SELECT * FROM rpg_quests WHERE quest_owner='" . $ownerId . "'", $this->debug);
+        } else {
+            $quests = $this->mysql->query("SELECT * FROM rpg_quests", $this->debug);
+        }
+
+        if ($this->mysql->numRows($quests) != 0) {
+            while ($line = $this->mysql->fetchNextObject($quests)) {
+                $questArray[] = array("quest_id" => $line->id, "quest_name" => $line->quest_name, "quest_description" => $line->quest_description, "quest_reward" => $line->quest_reward_item_id, "quest_reward_amount" => $line->quest_reward_amount, "quest_owner" => $line->quest_owner);
+            }
+            $statusArray["status"] = "ok";
+            $statusArray["message"] = "Liste der Quests";
+        } else {
+            $statusArray["status"] = "error";
+            $statusArray["message"] = "Keine Quests gefunden";
+        }
+        return array("status" => $statusArray, "quests" => $questArray);
+    }
+
+    public function setQuestActive($userId, $questId) {
+        $statusArray = array("status" => null, "message" => null);
+
+        if ($this->userExists($userId)) {
+            if (!$this->userHasQuest($userId, $questId)) {
+                $this->mysql->query("INSERT INTO rpg_questlog (user_id, quest_id, quest_done) VALUES ('" . $userId . "','" . $questId . "','0')");
+                $statusArray["status"] = "ok";
+                $statusArray["message"] = "Quest wurde hinzugefügt";
+            } else {
+                $statusArray["status"] = "error";
+                $statusArray["message"] = "User hat Quest schon angenommen";
+            }
+        } else {
+            $statusArray["status"] = "error";
+            $statusArray["message"] = "User nicht gefunden";
+        }
+        return array("status" => $statusArray);
+    }
+
+    public function setQuestDone($userId, $questId) {
+        $statusArray = array("status" => null, "message" => null);
+        if ($this->userExists($userId)) {
+            if ($this->userHasQuest($userId, $questId)) {
+                $this->mysql->query("UPDATE rpg_questlog SET quest_done='1' WHERE user_id='" . $userId . "' AND quest_id='" . $questId . "'", $this->debug);
+                $statusArray["status"] = "ok";
+                $statusArray["message"] = "User hat Quest abgeschlossen";
+            } else {
+                $statusArray["status"] = "error";
+                $statusArray["message"] = "User hat Quest noch nicht angenommen";
+            }
+        } else {
+            $statusArray["status"] = "error";
+            $statusArray["message"] = "User nicht gefunden";
+        }
+        return array("status" => $statusArray);
+    }
+
+    //########################### INVENTAR ###############################//
+    public function listInventar($userId) {
+        $statusArray = array("status" => null, "message" => null);
+        if ($this->userExists($userId)) {
+            $inventar = $this->mysql->query("SELECT * FROM rpg_inventar, rpg_items WHERE rpg_inventar.item_id = rpg_items.id and rpg_inventar.user_id = '" . $userId . "'");
+            if ($this->mysql->numRows($inventar) > 0) {
+                while ($line = $this->mysql->fetchNextObject($inventar)) {
+                    $inventarArray[] = array("item_id" => $line->item_id, "item_name" => $line->item_name, "item_class" => $line->item_class, "item_damage" => $line->item_damage, "item_value" => $line->item_value,"item_amount"=>$line->item_amount, "item_med" => $line->item_med, "item_strength" => $line->item_strength);
+                }
+                $statusArray["status"] = "ok";
+                $statusArray["message"] = "Inventar von UserId: ".$userId;
+            } else {
+                $statusArray["status"] = "error";
+                $statusArray["message"] = "leer";
+            }
+        } else {
+            $statusArray["status"] = "error";
+            $statusArray["message"] = "User nicht gefunden";
+        }
+        return array("status" => $statusArray, "userInventar" => $inventarArray);
     }
 
     //INTERNE FUNKTIONEN//
@@ -307,6 +387,24 @@ class RPG {
 
     function generateRandomString($length = 10) {
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+    }
+
+    function userExists($userId) {
+        $user = $this->mysql->query("SELECT * FROM rpg_character WHERE id='" . $userId . "'", $this->debug);
+        if ($this->mysql->numRows($user) != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function userHasQuest($userId, $questId) {
+        $quest = $this->mysql->query("SELECT * FROM rpg_questlog WHERE user_id='" . $userId . "' AND quest_id='" . $questId . "'", $this->debug);
+        if ($this->mysql->numRows($quest) != 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

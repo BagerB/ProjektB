@@ -77,8 +77,8 @@
             </form>
         </div>
 
-        <div><p>Quests</p></div>
-        
+        <div><p><strong>Quests</strong></p></div>
+
         <div>
             Questlog von User anzeigen:
             <form action="user.php" method="POST">
@@ -90,5 +90,44 @@
             </form>
         </div>
 
+        <div>
+            Quests von Questgeber anzeigen
+            <form action="user.php" method="POST">
+                <input type="hidden" name="action" value="listquests">
+                <input type="hidden" name="debug" value="true">
+                <input type="text" name="ownerid" value ="OwnerId">
+                <input type="submit" name="submit" value="Quest anzeigen">
+            </form>
+        </div>
+        <div>
+            Quests vergeben
+            <form action="user.php" method="POST">
+                <input type="hidden" name="action" value="setquest">
+                <input type="hidden" name="debug" value="true">
+                <input type="text" name="userid" value ="User Id">
+                <input type="text" name="questid" value ="Quest Id">
+                <input type="submit" name="submit" value="Quest vergeben">
+            </form>
+        </div>
+        <div>
+            Quests abschließen
+            <form action="user.php" method="POST">
+                <input type="hidden" name="action" value="setquestdone">
+                <input type="hidden" name="debug" value="true">
+                <input type="text" name="userid" value ="User Id">
+                <input type="text" name="questid" value ="Quest Id">
+                <input type="submit" name="submit" value="Quest abschließen">
+            </form>
+        </div>
+        <div><p><strong>Inventar</strong></p></div>
+        <div>
+            Inventar anzeigen
+            <form action="user.php" method="POST">
+                <input type="hidden" name="action" value="listinventar">
+                <input type="hidden" name="debug" value="true">
+                <input type="text" name="userid" value ="User Id">
+                <input type="submit" name="submit" value="Inventar anzeigen">
+            </form>
+        </div>
     </body>
 </html>
