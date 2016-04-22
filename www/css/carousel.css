@@ -21,5 +21,6 @@ body {
   margin-right: .75rem;
   margin-left: .75rem;
 }
-
-
+.img-circle {
+  opacity: 0.5;
+}
