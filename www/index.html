@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Loggen Sie sich bitte auf dieser Seite ein.">
-    <meta name="author" content="Bager Bingöl">
-    <link rel="icon" href="../../favicon.ico">
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-	<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="Loggen Sie sich bitte auf dieser Seite ein.">
+        <meta name="author" content="Bager Bingöl">
+        <link rel="icon" href="../../favicon.ico">
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
 
-    <title>Signin</title>
-	
-	
-
-	<link href="css/bootstrap.css" rel="stylesheet">
-	
-    <!-- Bootstrap core CSS 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
-  </head>
-  
-   <body>
-	
-	<div class="container">
-	  <form class="form-signin">
-        <h2 class="h2shadow">Bitte einloggen</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail-Adresse" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Passwort" required>
-       <a href="classtest.html">
-	   <button  class="btn" type="submit"> <h4 class="btntext">Einloggen</h4></button>
-	   </a href>
-	   <!--
-		<button class="btn" type="register"><h4 class="btntext">Registrieren</h4></button>-->
-      </form> 
-
-    </div> <!-- /container -->
+        <title>Signin</title>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js">
-	<script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-	</body>
+
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- Bootstrap core CSS 
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+        <!-- Custom styles for this template -->
+        <link href="css/signin.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <form class="form-signin">
+                <h2 class="h2shadow">Bitte einloggen</h2>
+                <label for="inputUser" class="sr-only">Username</label>
+                <input type="text" id="inputUser" class="form-control" placeholder="Name" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Passwort" required>
+
+                <button  class="btn" id="login-btn" type="button">Einloggen</button>
+                <button class="btn" id="register-btn" type="button">Registrieren</button>
+            </form> 
+
+        </div> <!-- /container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+         <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
 </html>
