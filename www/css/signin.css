@@ -20,12 +20,9 @@ body {
   margin: 0 auto;
 }
 .form-signin .form-signin-heading,
-.form-signin /*.checkbox*/ {
+.form-signin {
   margin-bottom: 10px;
 }
-/*.form-signin .checkbox {
-  font-weight: normal;
-}*/
 .form-signin .form-control {
   position: relative;
   height: auto;
@@ -82,14 +79,14 @@ body {
 	box-shadow: 1px 1px 5px rgba (171,255,255,0.8);*/
 }
 .btntext {
-	line-height:20px;
-	top:0;
-	left:0;
-	bottom:0;
-	text-align:center;
-	color: #2B344E;
-	z-index:6;
-	text-shadow: -1px -1px 0px rgba(167,221,255, .8), 1px 1px 2px black;
+	color: #CEF0D4; 
+	font-family: 'Rouge Script', cursive; 
+	font-size: 130px; 
+	font-weight: normal; 
+	line-height: 48px; 
+	margin: 0 0 50px; 
+	text-align: center; 
+	text-shadow: 1px 1px 2px #082b34;
 }
 .h2shadow{
 	position:relative;
@@ -103,7 +100,7 @@ body {
 	letter-spacing: 10px;
 	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72
 }
-.h2shadow::before {
+/*.h2shadow::before {
 	content: "bitte";
 	text-transform:uppercase;
 	position:absolute;
