@@ -1,6 +1,6 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 10%;
+  padding-bottom: 20%;
   background: -webkit-linear-gradient(left, #0f182b 0%, #2a3b53 33%, #2a3b53 66%, #0f182b 100%);
   background: -moz-linear-gradient(left, #0f182b 0%, #2a3b53 33%, #2a3b53 66%, #0f182b 100%);
   background: -o-linear-gradient(left, #0f182b 0%, #2a3b53 33%, #2a3b53 66%, #0f182b 100%);
@@ -10,9 +10,21 @@ body {
   background-image: url("../img/background2.jpg");
   background-attachment:fixed;
   -webkit-background-size: cover;
-  -moz-background-size: cover;    
-  -o-background-size: cover;      
+  -moz-background-size: cover;
   background-size: cover; 
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  
+  
+}
+#txtheader {
+	padding-bottom: 10%;
+	
+}
+@font-face {
+	font-family: 'Bucanera';
+	src: url('../fonts/Bucanera-font-FFP.ttf');
+	format ('truetype')
 }
 .form-signin {
   max-width: 330px;
@@ -44,12 +56,32 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.h2shadow{
+	/*position:relative;*/
+	margin: 0;
+	width:3.7em;
+	color:#d7ceb2;
+	font: 30px 'Bucanera';
+	font-weight:lighter;
+	text-transform:uppercase;
+	float: center;
+	letter-spacing: 10px;
+	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72;
+}
 .btn {
 	background-image:url(../img/buttonrect.png);
 	background-repeat:no-repeat;
 	background-position:50% 50%;
 	width: 170px;
 	height: 50px;
+	color: #CEF0D4; 
+	font-family: 'Rouge Script', cursive; 
+	font-size: 130px; 
+	font-weight: normal; 
+	line-height: 48px; 
+	margin: 0 50px 50px; 
+	text-align: center; 
+	text-shadow: 1px 1px 2px #082b34;
 }
 /*.btn::before {
 	content:"";
@@ -78,7 +110,7 @@ body {
 	-webkit-box-shadow: 1px 1px 5px rgba (171,255,255,0.8);
 	box-shadow: 1px 1px 5px rgba (171,255,255,0.8);*/
 }
-.btntext {
+/*.btntext {
 	color: #CEF0D4; 
 	font-family: 'Rouge Script', cursive; 
 	font-size: 130px; 
@@ -87,19 +119,8 @@ body {
 	margin: 0 0 50px; 
 	text-align: center; 
 	text-shadow: 1px 1px 2px #082b34;
-}
-.h2shadow{
-	position:relative;
-	margin: 0;
-	width:3.7em;
-	color:#d7ceb2;
-	font: 30px 'BazarMedium';
-	font-weight:lighter;
-	text-transform:uppercase;
-	float: left;
-	letter-spacing: 10px;
-	text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72
-}
+}*/
+
 /*.h2shadow::before {
 	content: "bitte";
 	text-transform:uppercase;
