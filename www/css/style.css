@@ -1,14 +1,14 @@
 html, body{
     font-size: 100%;
 	background:	#fff;
-	background: url(../img/background2.jpg)no-repeat;
-	font-family: 'Cabin', sans-serif;
+	background: url(../img/background_dirty_full.png)no-repeat;
+	font-family: 'Montserrat', sans-serif;
 }
 p{
 	margin:0;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Alex Brush', cursive;
+	font-family: 'Montserrat', sans-serif;
 	font-weight:100;
 	margin:0;
 }
@@ -21,7 +21,7 @@ body a:hover{
 }
 /*-- header --*/
 .header {
-    background: #1d1811;
+    background: #654321;
 }
 .navbar-default {
     background: none;
