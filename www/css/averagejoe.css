@@ -247,7 +247,11 @@ ul.callbacks_tabs.callbacks1_tabs {
 	height: 5px;
 	width: 10%;
 	margin: 20px auto 50px;
+<<<<<<< HEAD
 	background-color: #654321;
+=======
+	background-color: #006B61;
+>>>>>>> origin/master
 	border-radius: 20px;
 }
 /*-- //Headings --*/
@@ -523,11 +527,18 @@ font-size: 0.8em;
 
 /*-- Progressive-Effects --*/
 .progressive-effects {
+<<<<<<< HEAD
 	
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
 	background-size: auto;
+=======
+	background: url("../img/background_dirty_full.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+>>>>>>> origin/master
 	padding: 100px 0;
 }
 
@@ -545,6 +556,7 @@ font-size: 0.8em;
 	color: #FFF;
 }
 
+<<<<<<< HEAD
 .leads {
 	font-size: 12px;
 	font-weight: 800;
@@ -553,6 +565,8 @@ font-size: 0.8em;
 	color: #FFF;
 }
 
+=======
+>>>>>>> origin/master
 #about-us h1 {
 	margin-bottom: 30px;
 }
@@ -595,13 +609,23 @@ font-size: 0.8em;
 	width: 100px;
 }
 
+<<<<<<< HEAD
 /*.stats-img {
 	margin-bottom: 0;
 }*/
+=======
+.stats-img {
+	margin-bottom: 30px;
+}
+>>>>>>> origin/master
 
 .numscroller {
 	font-size: 35px;
 	font-weight: 700;
+<<<<<<< HEAD
+=======
+	color: #F44336;
+>>>>>>> origin/master
 	margin-bottom: 10px;
 }
 
@@ -1176,17 +1200,22 @@ a.mail:hover {
 		font-weight: 600;
 	}
 	.stats-img img {
+<<<<<<< HEAD
 		position:relative;
 		width: 100px;
 		padding-top: 20px;
 		display:block;
 		margin-left:auto;
 		margin-right:auto;	
+=======
+		width: 85px;
+>>>>>>> origin/master
 	}
 	.stats-info {
 		margin-top: 50px;
 	}
 	.numscroller {
+<<<<<<< HEAD
 		position:absolute;
 		top:40px;
 		left:0;
@@ -1194,6 +1223,9 @@ a.mail:hover {
 		text-align: center;
 		font-size: 15px;
 		margin:auto;
+=======
+		font-size: 32px;
+>>>>>>> origin/master
 	}
 	.stats-info p {
 		font-size: 18px;
@@ -1221,7 +1253,11 @@ a.mail:hover {
 		font-size: 13px;
 	}
 	.real, .progressive-effects {
+<<<<<<< HEAD
 		padding-top: 0px;
+=======
+		padding: 75px 0;
+>>>>>>> origin/master
 	}
 	.real img {
 		width: 125px;
@@ -1372,7 +1408,10 @@ a.mail:hover {
 		height: 15px;
 		margin-bottom: 15px;
 		line-height: 15px;
+<<<<<<< HEAD
 		box-shadow: 5px 5px 5px black;
+=======
+>>>>>>> origin/master
 	}
 	.progress-bar {
 		font-size: 11px;
@@ -1733,17 +1772,28 @@ a.mail:hover {
 		font-size: 14px;
 	}
 	.progressive-effects {
+<<<<<<< HEAD
 		padding: 0px 0 0;
+=======
+		padding: 50px 0 0;
+>>>>>>> origin/master
 	}
 	.stats-grid {
 		width: 50%;
 		margin-bottom: 50px;
 	}
 	.stats-img img {
+<<<<<<< HEAD
 		width: 45px;
 	}
 	.numscroller {
 		font-size: 20px;
+=======
+		width: 75px;
+	}
+	.numscroller {
+		font-size: 30px;
+>>>>>>> origin/master
 	}
 	.stats-info p {
 		font-size: 15px;
@@ -1923,7 +1973,10 @@ a.mail:hover {
 }
 .header {
     background: #654321;
+<<<<<<< HEAD
 	padding-top: 20px;
+=======
+>>>>>>> origin/master
 }
 .navbar-default {
     background: none;
