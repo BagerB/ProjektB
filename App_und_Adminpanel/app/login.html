@@ -1,0 +1,76 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="js/jquery-1.12.3.min.js"></script>
+        <script src="js_jquery/jquery.mobile-1.4.5.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js_server/server.js"></script>
+
+         <title>Systopia</title>
+        <!-- Custom Theme files -->
+        <link href="css/index.css" rel="stylesheet" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" />
+        <link href="css_jquery/jquery.mobile-1.4.5.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
+
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="app_images/icon.png" />
+        <link rel="apple-touch-startup-image" href="app_images/splashscreen.png" />
+        <link rel="apple-touch-icon-precomposed" href="app_images/icon_android.png" />
+
+    </head>
+    <body>
+
+
+        <div data-role="page" id="login">
+            <div class="login-form">
+                <div class="top-login">
+                    <span><img src="img/group.png" alt=""/></span>
+                </div>
+                <h1 id="headline">Login</h1>
+                <div class="login-top">
+                    <form>
+                        <div class="login-ic">
+                            <i ></i>
+                            <input type="text" id="username" value="User name" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'User name';
+                                    }"/>
+                            <div class="clear"> </div>
+                        </div>
+                        <div class="login-ic">
+                            <i class="icon"></i>
+                            <input type="password" id="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'password';
+                                    }"/>
+                            <div class="clear"> </div>
+                        </div>
+                        <div class="login-ic" id="reg-pw">
+                            <i class="icon"></i>
+                            <input type="password" id="password2" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'password';
+                                    }"/>
+                            <div class="clear"> </div>
+                        </div>
+
+                        <div class="log-bwn">
+                            <input type="button"  id="login-btn" value="Login" >
+                            <input type="button"  id="register-btn" value="Register" >
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="footer">
+
+                <p> &copy; 2016 HAW Industries. All rights reserved</p>
+
+            </div>
+        </div>
+    </body>
+</html>

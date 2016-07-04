@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="js/jquery-1.12.3.min.js"></script>
+        <script src="js_jquery/jquery.mobile-1.4.5.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js_server/server.js"></script>
+
+         <title>Systopia</title>
+        <!-- Custom Theme files -->
+        <link href="css/index.css" rel="stylesheet" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" />
+        <link href="css_jquery/jquery.mobile-1.4.5.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
+
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="app_images/icon.png" />
+        <link rel="apple-touch-startup-image" href="app_images/splashscreen.png" />
+        <link rel="apple-touch-icon-precomposed" href="app_images/icon_android.png" />
+
+    </head>
+    <body>
+
+
+        <div data-role="page" id="classes">
+            <div class="class-overlay" style='height:auto !important;'>
+                <div onclick="classClose();" class="class-close">X</div>
+                <div class="class-title">
+                    <h1>Beschreibung</h1>
+                </div>
+                <div class="class-description">
+                    Wenn die Situation schlecht aussieht, sind die Enforcer die ersten, die zur Stelle gerufen werden. Ausgestattet mit dem höchsten, was der technische Fortschritt der Waffentechnologie zu bieten hat, sorgen die Enforcer für Straßen, welche mit den Leichen ihrer Feinde gepflastert sind.
+                </div>
+                <div id="select-class" class="text-right">
+                    <input type="button" id="0" value="Auswählen">
+                </div>
+            </div>
+
+            <div class="container text-center">
+
+                <div class="faction">
+                    <h1 class='headliner'>Klasse:</h1>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="container">
+                 <div style="padding:0px;" class="col-xs-6 text-center faction-select ">
+
+                    <img src="img_classes/inaj.png"  class="img-block class-margin-img" />
+                    <div style="">
+                        <div class="faction-team">
+                            <p>Infanterist / Average Joe</p>
+                        </div>
+                    </div>
+
+                    <div class="class-title-info hidden">
+                        Infanterist / Average Joe
+                    </div>
+                    <div class="class-description-info hidden">
+                        <strong>Infanterist</strong><br>Infanteristen sind der Hauptbestandteil der Technokratenarmeen. Ihre Anzahl massiv, ihre Waffen effektiv; Die Infanteristen sind unabdingbar.<br><br> <strong>Average Joe</strong><br>Der Average Joe ist die Einordnung aller, die sich ohne Vorwissen im Krieg beteiligen wollen. Mit einem Sturmgewehr ausgerüstet dient der Average Joe als Rückgrat der avantgardistischen Streitmächte.
+                    </div>
+                    <div class="class-id hidden">1</div>
+                </div>
+
+                <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                    <img src="img_classes/dibra.png"  class="img-block class-margin-img"  />
+                    <div style="">
+                        <div class="faction-team">
+                            <p>Disassembler / Brawler</p>
+                        </div>
+                    </div>
+
+                    <div class="class-title-info hidden">
+                        Disassembler / Brawler
+                    </div>
+                    <div class="class-description-info hidden">
+                        <strong>Disassembler</strong><br>Die makaber genannten Disassembler machen ihrem Namen stets alle Ehre und zerteilen ihre Gegner im Nahkampf in jegliche Einzelteile. Extrem mobil und im Besitz der gefürchteten INVICTUS-Kampfrüstung sind die Disassembler im Kampf nie zu übersehen.<br><br><strong>Brawler</strong><br>Für Brawler ist nur der Nahkampf das einzig Wahre. Immer im Adrenalinrausch und höchstgefährlich; nur der Abstand zwischen dem Ziel und dem Brawler steht dem letzteren im Weg.
+                    </div>
+                    <div class="class-id hidden">2</div>
+                </div>
+            </div>
+            <div class="container">
+                <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                    <img src="img_classes/mslb.png"  class="img-block class-margin-img" />
+                    <div style="">
+                        <div class="faction-team">
+                            <p>Mindscaper / Limit Breaker</p>
+                        </div>
+                    </div>
+
+                    <div class="class-title-info hidden">
+                        Mindscaper / Limit Breaker
+                    </div>
+                    <div class="class-description-info hidden">
+                        <strong>Mindscaper</strong><br>Gefürchtet von Freund und Feind sind die Mindscaper, welche durch allerseits übernatürliche Kräfte ihren Weg durchsetzen. Aufgrund ihrer geistlichen Instabilität jedoch dürfen sie keine Waffen bei sich tragen.<br><br><strong>Limit Breaker</strong><br>Ausgestattet mit übernatürlichen Kräften, welche die menschlichen Limits weit übertreffen, sind die Limit Breaker oft diejenigen, die eine Schlacht auf den Kopf stellen können. Aufgrund der geistlichen Instabilität eines Limit Breakers ist es ihnen jedoch verboten, Waffen bei sich zu tragen.
+                    </div>
+                    <div class="class-id hidden">3</div>
+                </div>
+                <div style="padding:0px;" class="col-xs-6 text-center faction-select">
+
+                    <img src="img_classes/ampi.png"  class="img-block class-margin-img"  />
+                    <div style="">
+                        <div class="faction-team">
+                            <p>Ambidexter / Pistolero</p>
+                        </div>
+                    </div>
+
+                    <div class="class-title-info hidden">
+                        Ambidexter / Pistolero
+                    </div>
+                    <div class="class-description-info hidden">
+                        <strong>Ambidexter</strong><br>Eine Abteilung der Technokraten, welche ausschließlich aus Menschen besteht, die beidhändig begabt sind. Ihre Bewaffnung schließt nur Handwaffen ein, jedoch benutzen die Ambidexter diese mit tödlicher Präzision.<br><br><strong>Pistoleros</strong><br>Die Pistoleros sind immer in Bewegung und schnell am Abzug. Sie verwenden ausschließlich Handwaffen, jedoch hat dies eine erhöhte Mobilität zum Vorteil.
+                    </div>
+                    <div class="class-id hidden">4</div>
+                </div>
+            </div>
+            <div class="container">
+                <div style="padding:0px;" class="col-xs-offset-3 col-xs-6 text-center faction-select">
+
+                    <img src="img_classes/ensp.png"  class="img-block class-margin-img" />
+                    <div style="">
+                        <div class="faction-team">
+                            <p>Enforcer / Specialist</p>
+                        </div>
+                    </div>
+
+                    <div class="class-title-info hidden">
+                        Enforcer / Specialist
+                    </div>
+                    <div class="class-description-info hidden">
+                        <strong>Enforcer</strong><br>Wenn die Situation schlecht aussieht, sind die Enforcer die ersten, die zur Stelle gerufen werden. Ausgestattet mit dem höchsten, was der technische Fortschritt der Waffentechnologie zu bieten hat, sorgen die Enforcer für Straßen, welche mit den Leichen ihrer Feinde gepflastert sind.<br><br><strong>Specialist</strong><br>Schwer und außergewöhnlich bewaffnet: das ist der Specialist. Was er an Mobilität verliert, macht er an Feuerkraft wieder wett.
+                    </div>
+                    <div class="class-id hidden">5</div>
+                </div>
+                
+                
+                
+
+                
+            </div>
+            
+            
+            <div class="footer">
+
+                &copy; 2016 HAW Industries. All rights reserved 
+
+            </div>
+        </div>
+    </body>
+</html>

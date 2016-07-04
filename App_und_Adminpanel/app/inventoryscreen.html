@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="js/jquery-1.12.3.min.js"></script>
+        <script src="js_jquery/jquery.mobile-1.4.5.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js_server/server.js"></script>
+
+         <title>Systopia</title>
+        <!-- Custom Theme files -->
+        <link href="css/index.css" rel="stylesheet" type="text/css" media="all"/>
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all" />
+        <link href="css_jquery/jquery.mobile-1.4.5.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" >
+
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon" href="app_images/icon.png" />
+        <link rel="apple-touch-startup-image" href="app_images/splashscreen.png" />
+        <link rel="apple-touch-icon-precomposed" href="app_images/icon_android.png" />
+
+    </head>
+    <body>
+
+        <div data-role="page" id="inventory">
+            <div class="topBox" >
+
+                <div id="itemOverlay" class="class-overlay item">
+                    <div onclick="classClose();" class="class-close">X</div>
+                    <div class="class-title">
+                        <h2>Test</h2>
+                    </div>
+                    <div class='class-description'>
+                        <div class='item-stats text-center hideon'>
+                            <img style="width:100px; height:auto; margin-bottom: 5px;" id="item_image" src="" alt="Item Image"/>
+                            <div>
+                                <strong>Damage: </strong><span id="item_damage">test</span>
+                            </div>
+                            <div>
+                                <strong>Range: </strong><span id="item_range">test</span>
+                            </div>
+                            
+                            <div>
+                                <strong>Firerate: </strong><span id="item_firerate">test</span>
+                            </div>
+                            <div>
+                                <strong>Special: </strong><span id="item_special">test</span>
+                            </div>
+                            
+                            <div>
+                                <strong>Dice: </strong><span id="item_dice">test</span>
+                            </div>
+                            <br><br>
+                            <div id="item_content">
+                                
+                            </div>
+                        </div>
+                        <div class='item-image hideon'><img style="max-height: 350px" class="panzoom" src="" /></div>
+                        <div class='item-text hideon'></div>
+                    </div>
+                </div>
+                
+
+                <div id="codeOverlay" class="class-overlay">
+                    <div onclick="codeClose();" class="class-close">X</div>
+                    <div class="class-title">
+                        <h2>Code eingeben</h2>
+                        <div class="row">
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
+
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
+                            </div>
+                            <div class="col-xs-3 ">
+                                <div class="codeBox">
+                                    0
+                                </div>
+                            </div>
+                        </div><h2></h2>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input type="button" value="1" onclick="addNumber(1);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="2" onclick="addNumber(2);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="3" onclick="addNumber(3);"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input type="button" value="4" onclick="addNumber(4);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="5" onclick="addNumber(5);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="6" onclick="addNumber(6);"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input type="button" value="7" onclick="addNumber(7);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="8" onclick="addNumber(8);"/>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" value="9" onclick="addNumber(9);"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-offset-3">
+                                <input type="button" onclick="loadCode();" value="Absenden">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="header">
+                    <div class="container">
+                        <nav class="navbar navbar-default">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <div onclick="logout();" class="logout">
+                                    Logout
+                                </div>
+                                <div class="logo">
+                                    <img id="userImage" alt="user Img" src="item_images/default.png">
+                                    <div id="usernameDiv"></div>
+                                    <div id="classnameDiv"></div>
+                                </div>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+
+                        </nav>
+                    </div>
+                </div>
+
+
+                <div class="container statsBox">
+
+
+                    <div class="col-xs-5 nopadding">
+                        <div class="col-xs-12">
+
+                            <div class="progress">
+                                <div id="health" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 ">
+
+                            <div class="progress">
+                                <div id="xp" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="30" style="width: 60%;">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 nopadding">
+                        <div  class="responsive-img coins text-center">
+                            <img alt="Kronkorken" src="item_images/default.png"/>
+                        </div>
+                        <div id="kronkorken">0</div>
+                    </div>
+                    <div class="col-xs-5 nopadding">
+                        <div class="col-xs-12">
+
+                            <div class="progress">
+                                <div id="reaction" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style="width: 60%;">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+
+                            <div class="progress">
+                                <div id="stamina" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="10" style="width: 60%;">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container tab-container">
+                    <div onclick="loadPage('inventory');" id="toInv" class="tab tab-active">
+                        Inventar
+                    </div><div onclick="loadPage('quest');" id="toQue"  class="tab">
+                        Quests
+                    </div><div onclick="loadPage('minimap');" id="toMap" class="tab">
+                        Minimap
+                    </div>
+                </div>
+            </div>
+
+            <div class="container bottomBox">
+                <div style="text-align: center">
+                    <div class="message" id="message">
+                        
+                    </div>
+                    <div id="codeButton" onclick="showCode();">
+                        Code eingeben
+                    </div>
+                </div>
+                <div id="inventoryBox">
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="footer" >
+
+                <p> &copy 2016 HAW Industries. All rights reserved</p>
+
+            </div>
+        </div>
+
+    </body>
+</html>
